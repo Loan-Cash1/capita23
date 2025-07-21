@@ -54,6 +54,8 @@
   </div>  <div class="container" id="step2">
     <h2>ඔබගේ ණය විස්තර</h2>
     <div id="result"></div>
+    <br>
+    <button onclick="goNext()">ඉදිරියට යන්න</button>
   </div>  <script>
     const amountInput = document.getElementById('amount');
     const applyBtn = document.getElementById('applyBtn');
@@ -91,5 +93,10 @@
       step1.style.display = 'none';
       step2.style.display = 'block';
     });
+
+    function goNext() {
+      alert("ඔබ ඉදිරියට යාමට තෝරා ඇත. මෙය ඊලඟ පිටුවට හරවා ගත හැක.");
+      // මෙහිදී location.href = 'nextpage.html'; වැනි redirect එකක් දාන්න පුළුවන්
+    }
   </script></body>
 </html>
