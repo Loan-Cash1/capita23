@@ -4,19 +4,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cash One</title>
   <style>
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
       font-family: sans-serif;
-      text-align: center;
-      padding: 40px;
       background-color: #f4f4f4;
     }
     .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
       background-color: #fff;
+    }
+    .content-box {
+      width: 100%;
       max-width: 400px;
-      margin: 0 auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     input[type="number"] {
       width: 100%;
@@ -24,14 +33,16 @@
       margin: 20px 0;
       border-radius: 5px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
     button {
-      padding: 12px 25px;
+      width: 100%;
+      padding: 15px;
       background-color: #007bff;
       color: white;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
     }
     button:disabled {
@@ -41,21 +52,33 @@
     #step2 {
       display: none;
     }
+    h2, p {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    #result p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
   <div class="container" id="step1">
-    <h2>Cash One වෙත ඔබව සාදරයෙන් පිළිගන්නවා!</h2>
-    <p>ඔබට රුපියල් 40000 සිට රුපියල් 700000 දක්වා මුදලක් ලබා ගැනීමට හැකියාවක් ඇත.. කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
-<input type="number" id="amount" placeholder="රු. 40000 - 700000">
+    <div class="content-box">
+      <h2>Cash One වෙත ඔබව සාදරයෙන් පිළිගන්නවා!</h2>
+      <p>ඔබට රුපියල් 40000 සිට රුපියල් 700000 දක්වා මුදලක් ලබා ගැනීමට හැකියාවක් ඇත.. කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
+  <input type="number" id="amount" placeholder="රු. 40000 - 700000">
 
-<button id="applyBtn" disabled>Apply</button>
+  <button id="applyBtn" disabled>Apply</button>
+</div>
 
   </div>  <div class="container" id="step2">
-    <h2>ඔබගේ ණය විස්තර</h2>
-    <div id="result"></div>
-    <br>
-    <button onclick="goNext()">ඉදිරියට යන්න</button>
+    <div class="content-box">
+      <h2>ඔබගේ ණය විස්තර</h2>
+      <div id="result"></div>
+      <br>
+      <button onclick="goNext()">ඉදිරියට යන්න</button>
+    </div>
   </div>  <script>
     const amountInput = document.getElementById('amount');
     const applyBtn = document.getElementById('applyBtn');
@@ -91,12 +114,134 @@
       `;
 
       step1.style.display = 'none';
-      step2.style.display = 'block';
+      step2.style.display = 'flex';
     });
 
     function goNext() {
       alert("ඔබ ඉදිරියට යාමට තෝරා ඇත. මෙය ඊලඟ පිටුවට හරවා ගත හැක.");
-      // මෙහිදී location.href = 'nextpage.html'; වැනි redirect එකක් දාන්න පුළුවන්
+    }
+  </script></body>
+</html><!DOCTYPE html><html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cash One</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+      background-color: #fff;
+    }
+    .content-box {
+      width: 100%;
+      max-width: 400px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    #step2 {
+      display: none;
+    }
+    h2, p {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    #result p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="step1">
+    <div class="content-box">
+      <h2>Cash One වෙත ඔබව සාදරයෙන් පිළිගන්නවා!</h2>
+      <p>ඔබට රුපියල් 40000 සිට රුපියල් 700000 දක්වා මුදලක් ලබා ගැනීමට හැකියාවක් ඇත.. කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
+  <input type="number" id="amount" placeholder="රු. 40000 - 700000">
+
+  <button id="applyBtn" disabled>Apply</button>
+</div>
+
+  </div>  <div class="container" id="step2">
+    <div class="content-box">
+      <h2>ඔබගේ ණය විස්තර</h2>
+      <div id="result"></div>
+      <br>
+      <button onclick="goNext()">ඉදිරියට යන්න</button>
+    </div>
+  </div>  <script>
+    const amountInput = document.getElementById('amount');
+    const applyBtn = document.getElementById('applyBtn');
+    const result = document.getElementById('result');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+
+    amountInput.addEventListener('input', () => {
+      const amount = parseInt(amountInput.value);
+      if (amount >= 40000 && amount <= 700000) {
+        applyBtn.disabled = false;
+      } else {
+        applyBtn.disabled = true;
+      }
+    });
+
+    applyBtn.addEventListener('click', () => {
+      const amount = parseInt(amountInput.value);
+      let months = 0;
+      if (amount >= 40000 && amount < 80000) months = 6;
+      else if (amount >= 80000 && amount < 200000) months = 12;
+      else if (amount >= 200000 && amount < 400000) months = 24;
+      else if (amount >= 400000 && amount <= 700000) months = 30;
+
+      const totalInterest = amount * 0.07;
+      const totalPayable = amount + totalInterest;
+      const monthlyInstallment = (totalPayable / months).toFixed(2);
+
+      result.innerHTML = `
+        <p>ඔබ ඇතුළත් කළ මුදල: රු. ${amount.toLocaleString()}</p>
+        <p>මුළු ගෙවීම්: රු. ${totalPayable.toLocaleString()}</p>
+        <p>මාස ${months}ක් සඳහා මාසික වාරිකය: රු. ${monthlyInstallment.toLocaleString()}</p>
+      `;
+
+      step1.style.display = 'none';
+      step2.style.display = 'flex';
+    });
+
+    function goNext() {
+      alert("ඔබ ඉදිරියට යාමට තෝරා ඇත. මෙය ඊලඟ පිටුවට හරවා ගත හැක.");
     }
   </script></body>
 </html>
