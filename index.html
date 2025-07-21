@@ -38,26 +38,28 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
+    #step2 {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="step1">
     <h2>Cash One වෙත ඔබව සාදරයෙන් පිළිගන්නවා!</h2>
-    <p>ඔබට රුපියල් 40000 සිට රුපියල් 700000 දක්වා මුදලක් ලබා ගැනීමට හැකියාවක් ඇත..කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
+    <p>ඔබට රුපියල් 40000 සිට රුපියල් 700000 දක්වා මුදලක් ලබා ගැනීමට හැකියාවක් ඇත.. කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
 <input type="number" id="amount" placeholder="රු. 40000 - 700000">
 
 <button id="applyBtn" disabled>Apply</button>
 
-<div id="result"></div>
-
+  </div>  <div class="container" id="step2">
+    <h2>ඔබගේ ණය විස්තර</h2>
+    <div id="result"></div>
   </div>  <script>
     const amountInput = document.getElementById('amount');
     const applyBtn = document.getElementById('applyBtn');
     const result = document.getElementById('result');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
 
     amountInput.addEventListener('input', () => {
       const amount = parseInt(amountInput.value);
@@ -65,7 +67,6 @@
         applyBtn.disabled = false;
       } else {
         applyBtn.disabled = true;
-        result.innerHTML = "";
       }
     });
 
@@ -82,9 +83,13 @@
       const monthlyInstallment = (totalPayable / months).toFixed(2);
 
       result.innerHTML = `
+        <p>ඔබ ඇතුළත් කළ මුදල: රු. ${amount.toLocaleString()}</p>
         <p>මුළු ගෙවීම්: රු. ${totalPayable.toLocaleString()}</p>
-        <p>මාසික වාරිකය (${months} මාස): රු. ${monthlyInstallment.toLocaleString()}</p>
+        <p>මාස ${months}ක් සඳහා මාසික වාරිකය: රු. ${monthlyInstallment.toLocaleString()}</p>
       `;
+
+      step1.style.display = 'none';
+      step2.style.display = 'block';
     });
   </script></body>
 </html>
