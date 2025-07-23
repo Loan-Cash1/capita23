@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="si">
+<!DOCTYPE html>
+<html lang="si">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,13 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       height: 100%;
       font-family: sans-serif;
       background-color: #f4f4f4;
     }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -24,10 +27,12 @@
       background-color: #fff;
       text-align: center;
     }
+
     .content-box {
       width: 100%;
       max-width: 400px;
     }
+
     input[type="number"] {
       width: 100%;
       padding: 12px;
@@ -36,8 +41,9 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
+
     button {
-      width: 100%;
+      width: 90%;
       padding: 15px;
       background-color: #04d4ae;
       color: white;
@@ -46,56 +52,87 @@
       font-size: 18px;
       cursor: pointer;
     }
+
     button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
     }
+
+    .agree-button {
+      background-color: #28a745;
+      margin-top: 20px;
+    }
+
     #step2 {
       display: none;
     }
+
     h2, p {
       margin-bottom: 15px;
     }
+
     #result p {
       font-size: 16px;
       margin-bottom: 10px;
+      line-height: 1.6;
     }
+
     .animated-title {
       opacity: 0;
       animation: fadeIn 2s ease-in-out forwards;
-    }@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    }
 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .content-box {
+        max-width: 95%;
+      }
+
+      h2, p, label {
+        font-size: 16px;
+      }
+
+      input[type="number"] {
+        font-size: 15px;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 12px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container" id="step1">
     <div class="content-box">
-      <h2 class="animated-title">CapitalLanka වෙත සාදරයෙන් පිළිගන්නවා!
-</h2>
-      <p>කරුණාකර පහලින් ඇප්ලයි කරන්න!</p><label for="amount">මුදලක් සඳහන් කරන්න</label>
-  <input type="number" id="amount" placeholder="රු. 40000 - 700000">
+      <h2 class="animated-title">CapitalLanka වෙත සාදරයෙන් පිළිගන්නවා!</h2>
+      <p>කරුණාකර පහලින් ඇප්ලයි කරන්න!</p>
+      <label for="amount">මුදලක් සඳහන් කරන්න</label>
+      <input type="number" id="amount" placeholder="රු. 40000 - 700000">
+      <button id="applyBtn" disabled>Apply</button>
+    </div>
+  </div>
 
-  <button id="applyBtn" disabled>Apply</button>
-</div>
-
-  </div>  <div class="container" id="step2">
+  <div class="container" id="step2">
     <div class="content-box">
       <h2>ඔබගේ ණය විස්තර</h2>
       <div id="result"></div>
-      <br>
-      
-<button class="agree-button">ඉදිරියට යන්න</button
+      <button class="agree-button" onclick="goNext()">ඉදිරියට යන්න</button>
     </div>
-  </div>  <script>
+  </div>
+
+  <script>
     const amountInput = document.getElementById('amount');
     const applyBtn = document.getElementById('applyBtn');
     const result = document.getElementById('result');
@@ -114,6 +151,7 @@
     applyBtn.addEventListener('click', () => {
       const amount = parseInt(amountInput.value);
       let months = 0;
+
       if (amount >= 40000 && amount < 80000) months = 6;
       else if (amount >= 80000 && amount < 200000) months = 12;
       else if (amount >= 200000 && amount < 400000) months = 24;
@@ -124,17 +162,19 @@
       const monthlyInstallment = (totalPayable / months).toFixed(2);
 
       result.innerHTML = `
-        <p>ඔබ ඇතුළත් කළ මුදල: රු. ${amount.toLocaleString()}</p>
-        <p>මුළු ගෙවීම්: රු. ${totalPayable.toLocaleString()}</p>
-        <p>මාස ${months}ක් සඳහා මාසික වාරිකය: රු. ${monthlyInstallment.toLocaleString()}</p>
+        <p>ඔබ ඇතුළත් කළ මුදල: <strong>රු. ${amount.toLocaleString()}</strong></p>
+        <p>මුළු ගෙවීම්: <strong>රු. ${totalPayable.toLocaleString()}</strong></p>
+        <p>මාස ${months}ක් සඳහා මාසික වාරිකය:<br><strong>රු. ${monthlyInstallment.toLocaleString()} පමණි</strong></p>
       `;
 
       step1.style.display = 'none';
       step2.style.display = 'flex';
     });
 
-   function goNext() {
-  window.location.href = "https://capitalanka.lk/apply-form";
-}
-  </script></body>
+    function goNext() {
+      // මේ තැනින් redirect වෙනවා
+      window.location.href = "https://capitalanka.lk/apply-form";
+    }
+  </script>
+</body>
 </html>
